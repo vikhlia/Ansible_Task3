@@ -1,0 +1,26 @@
+---
+# tasks file for install_httpd
+- name: install httpd
+  yum:
+    name: httpd
+    state: installed
+- name: start httpd
+  systemd: 
+    name: httpd 
+    state: started
+- name: httpd status
+  command:  systemctl status "{{ web_package }}"
+  register: result
+- name: show report
+  debug: 
+    var: result
+- name: create a file with text
+  copy: 
+    content: "Welcome to my web server"
+    dest: /var/www/html/index.html
+- name: open port
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
+  notify: restart_web

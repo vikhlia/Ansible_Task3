@@ -1,0 +1,11 @@
+---
+# handlers file for install_FTP
+- name: restart_FTP
+  command: systemctl restart vsftpd
+- name: start_FTP
+  command: systemctl start vsftpd  
+- name: SELinux
+  seboolean:
+    name: allow_ftpd_anon_write
+    state: YES
+    persistent: YES

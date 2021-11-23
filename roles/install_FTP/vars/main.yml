@@ -1,0 +1,13 @@
+---
+# vars file for install_FTP
+anonymous_enable: YES
+no_anon_password: YES
+local_enable: YES
+write_enable: YES
+xferlog_file: YES
+
+anon_root: /var/ftp/pub/upload
+anon_upload_enable: YES
+anon_mkdir_write_enable: YES
+chown_uploadds: YES
+chown_username: ftp

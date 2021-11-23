@@ -1,0 +1,12 @@
+---
+- name: ftp is there
+  hosts: [nodes]
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+
+  
+  roles:
+    - role: install_FTP            
+...
